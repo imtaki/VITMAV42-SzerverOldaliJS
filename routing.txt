@@ -1,0 +1,5 @@
+/       Dashboard, edzők száma, edzések száma, Felsorolva legutóbbi edzések
+/trainers   Szélyiedzők hozzáadása, törlése, módositása, keresés név alapján
+/workouts   Edzések hozzáadása, törlése, módositása, keresés név alapján
+
+/ 
