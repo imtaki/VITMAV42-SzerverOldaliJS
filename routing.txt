@@ -1,0 +1,53 @@
+getTrainerMW: edzők lekérdezése
+getTrainersMW: edzők lekérdezése
+getMostTrainerMW: edzők legtöbb edzésel lekérdezés
+postTrainerMW: edzők küldése form-ról backendre
+updateTrainerMW: edzők módosítása form-ról backendre 
+deleteTrainerMW: törli az edzőt és átirányít a usert /-re
+
+getWorkoutMW: edzés lekérdezése
+getWorkoutsMW: edzések lekérdezése
+getLatestWorkoutsMW: utolsó 3 edzés lekérdezése
+postWorkoutMW: edzés küldése form-ról backendre
+updateWorkoutMW: edzés módosítása form-ról backendre
+deleteWorkoutMW: törli az edzést és átirányít a usert /-re
+renderMW: HTML-t add ki
+
+Method
+GET /       Dashboard, edzők száma, edzések száma, Felsorolva legutóbbi edzések
+    getTrainersMW - bol csak a számot
+    getWorkoutsMW - bol csak a számot
+    
+GET /trainers   Edzők hozzáadása, törlése, módosítása, keresés név alapján
+    renderMW
+    getTrainersMW
+GET /workouts   Edzések hozzáadása, törlése, módosítása, keresés név alapján
+    renderMW
+    getWorkoutsMW
+
+GET  /trainer/:id            Edző lekérése
+    getTrainerMW
+GET /trainer/                Edzők lekérdezése (osszes, paginate ha sok lenne :/)
+    getTrainersMW
+GET /trainer/most/          Edző lekérdezése, akinek legtöbb edzése van
+    getMostTrainerMW
+POST /trainer/new            Edző hozzáadása
+    postTrainerMW
+UPDATE /trainer/edit/:id     Edző módosítása
+    updateTrainerMW
+DELETE /trainer/delete/:id   Edző törlése
+    deleteTrainerMW
+
+
+GET  /workout/:id            Edzés lekérése
+     getWorkoutMW
+GET /workout/                Edzések lekérdezése (összes, paginate ha sok lenne :/)
+    getWorkoutsMW
+GET /workout/latest          Utolsó 3 edzés lekérése - dashboard miatt
+    getLatestWorkoutsMW
+POST /workout/new            Edzés hozzáadása
+     postWorkoutMW
+UPDATE /workout/edit/:id     Edzés módosítása
+     updateWorkoutMW
+DELETE /workout/delete/:id   Edzés törlése
+    deleteWorkoutMW
