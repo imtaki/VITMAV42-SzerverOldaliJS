@@ -5,7 +5,11 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            const workouts = await objRepo.EdzesModel.find().populate('_trainerId').sort({ _id: -1 });
+            res.locals.workouts = workouts.map(require('../utility/format').workoutView);
+            return next();
+        } catch (err) { return next(err); }
     }
 }
