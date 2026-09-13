@@ -5,7 +5,11 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            const trainers = await objRepo.EdzoModel.find().sort({ name: 1 });
+            res.locals.trainers = trainers.map(require('../utility/format').trainerView);
+            return next();
+        } catch (err) { return next(err); }
     }
 }

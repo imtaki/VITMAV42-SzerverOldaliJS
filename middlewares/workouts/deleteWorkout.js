@@ -5,7 +5,11 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            await objRepo.EdzesModel.findByIdAndDelete(req.params.id);
+            return res.redirect('/workouts');
+        }
+        catch (err) { return next(err); }
     }
 }

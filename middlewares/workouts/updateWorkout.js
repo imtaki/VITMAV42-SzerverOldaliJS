@@ -5,7 +5,13 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            await objRepo.EdzesModel.findByIdAndUpdate(req.params.id, {
+                name: req.body.nev, type: req.body.tipus,
+                duration: Number(req.body.idotartam), _trainerId: req.body.edzo
+            }, { runValidators: true });
+            return res.redirect('/workouts');
+        } catch (err) { return next(err); }
     }
 }

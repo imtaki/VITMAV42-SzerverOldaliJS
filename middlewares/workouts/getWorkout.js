@@ -5,7 +5,12 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            const workout = await objRepo.EdzesModel.findById(req.params.id).populate('_trainerId');
+            if (!workout) return res.status(404).json({ error: 'Workout not found' });
+            res.locals.workout = require('../utility/format').workoutView(workout);
+            return next();
+        } catch (err) { return next(err); }
     }
 }

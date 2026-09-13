@@ -5,7 +5,7 @@ const Edzes = db.model('Edzes', new schema({
     name: { type: String},
     type: { type: String},
     duration: { type: Number},
-    _trainerId: { type: schema.Types.ObjectId, ref: 'Trainer' }
+    _trainerId: { type: schema.Types.ObjectId, ref: 'Edzo' }
 }));
 
 module.exports = Edzes;

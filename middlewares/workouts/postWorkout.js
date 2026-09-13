@@ -5,7 +5,14 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            const workout = await objRepo.EdzesModel.create({
+                name: req.body.nev, type: req.body.tipus,
+                duration: Number(req.body.idotartam), _trainerId: req.body.edzo
+            });
+            res.locals.workout = workout;
+            return res.redirect('/workouts');
+        } catch (err) { return next(err); }
     }
 }

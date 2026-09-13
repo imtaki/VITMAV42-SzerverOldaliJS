@@ -6,8 +6,14 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        // res.locals.trainersCount = objRepo.data.trainers.getCount();
-        return next();
+    return async (req, res, next) => {
+        try { 
+            res.locals.trainersCount = await objRepo.EdzoModel.countDocuments();
+            res.locals.stats = [
+                { label: 'Személyi edzők', value: res.locals.trainersCount, icon: '<circle cx="12" cy="8" r="3.5" /><path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6" />' }
+            ];
+            return next(); 
+        }
+        catch (err) { return next(err); }
     }
 }

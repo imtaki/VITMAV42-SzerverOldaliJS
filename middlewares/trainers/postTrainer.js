@@ -5,7 +5,15 @@
  */
 
 module.exports = (objRepo) => {
-    return (req, res, next) => {
-        return next();
+    return async (req, res, next) => {
+        try {
+            const trainer = await objRepo.EdzoModel.create({
+                name: req.body.nev, initial: req.body.nev?.charAt(0).toUpperCase(),
+                age: Number(req.body.kor), height: Number(req.body.magassag),
+                certified: req.body.certifikacio === 'true'
+            });
+            res.locals.trainer = trainer;
+            return res.redirect('/trainers');
+        } catch (err) { return next(err); }
     }
 }
