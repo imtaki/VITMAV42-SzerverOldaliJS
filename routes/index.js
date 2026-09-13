@@ -19,7 +19,7 @@ const renderMW = require('../middlewares/utility/render');
 module.exports = function (app) {
     const objRepo = {};
 
-    app.use('/',
+    app.get('/',
         loadTrainersCountMW(objRepo),
         loadWorkoutCountMW(objRepo),
         renderMW(objRepo, 'index'));
@@ -27,12 +27,43 @@ module.exports = function (app) {
     
     app.use('/trainers',
         getTrainersMW(objRepo),
-        renderMW(objRepo, 'trainers'));
+        renderMW(objRepo, 'edzok'));
 
     
     app.use('/workouts',
         getWorkoutsMW(objRepo),
-        renderMW(objRepo, 'workouts'));
+        renderMW(objRepo, 'edzesek'));
+
+    app.get('/trainer/new',
+        renderMW(objRepo, 'edzo-new', { trainer: {} }));
+
+    app.get('/trainer/edit/:id',
+        renderMW(objRepo, 'edzo-edit', req => ({
+            trainer: {
+                id: req.params.id,
+                name: 'Péter',
+                initial: 'P',
+                age: 30,
+                height: 190,
+                certified: true
+            }
+        })));
+
+    app.get('/workout/new',
+        renderMW(objRepo, 'edzes-new', { workout: {} }));
+
+    app.get('/workout/edit/:id',
+        renderMW(objRepo, 'edzes-edit', req => ({
+            workout: {
+                id: req.params.id,
+                name: 'Mell és hát',
+                type: 'sulyzos',
+                typeLabel: 'Súlyzós',
+                duration: 60,
+                trainerId: 1,
+                trainerName: 'Péter'
+            }
+        })));
 
     
     app.get('/trainer/:id',

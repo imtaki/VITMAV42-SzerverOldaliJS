@@ -1,0 +1,40 @@
+<%- include('partials/header', { title: 'Személyi edzők', activePage: 'trainers' }) %>
+    
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Személyi edzők</h1>
+          <p class="subtitle">A rendszerben található személyi edzők.</p>
+        </div>
+        <a class="btn-primary" href="/trainer/new">+ Új edző</a>
+      </div>
+
+      <%- include('partials/search') %>
+      <section class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Név</th>
+                <th>Kor</th>
+                <th>Magasság</th>
+                <th>Certifikáció</th>
+                <th>Műveletek</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% trainers.forEach(trainer => { %>
+                <tr>
+                  <td><div class="person"><span class="avatar"><%= trainer.initial %></span><%= trainer.name %></div></td>
+                  <td><%= trainer.age %></td>
+                  <td><%= trainer.height %> cm</td>
+                  <td><span class="badge"><%= trainer.certified ? 'Igen' : 'Nem' %></span></td>
+                  <td><%- include('partials/table-actions', { editUrl: '/trainer/edit/' + trainer.id, deleteUrl: '/trainer/delete/' + trainer.id }) %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <%- include('partials/paginate') %>
+    <%- include('partials/footer') %>

@@ -1,0 +1,12 @@
+<%- include('partials/header', { title: 'Új edző', activePage: 'trainers' }) %>
+        <main class="content">
+
+            <h1>Új személyi edző</h1>
+            <p class="subtitle">Új edző hozzáadása.</p>
+
+            <section class="panel">
+                <%- include('partials/trainer-form', { trainer: trainer, formAction: '/trainer/new', submitLabel: 'Létrehozás' }) %>
+            </section>
+
+        </main>
+        <%- include('partials/footer') %>

@@ -1,0 +1,42 @@
+<%- include('partials/header', { title: 'Dashboard', activePage: 'dashboard' }) %>
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Dashboard</h1>
+          <p class="subtitle">Személyi edzések és edzők áttekintése.</p>
+        </div>
+      </div>
+      <section class="cards">
+        <% stats.forEach(stat => { %>
+          <%- include('partials/stat-card', stat) %>
+        <% }) %>
+      </section>
+      <section class="panel">
+        <div class="panel-heading">
+          <h2>Legutóbbi edzések</h2>
+          <a href="/workouts">Összes edzés →</a>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Edzés neve</th>
+                <th>Típus</th>
+                <th>Időtartam</th>
+                <th>Edző</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% latestWorkouts.forEach(workout => { %>
+                <tr>
+                  <td><%= workout.name %></td>
+                  <td><span class="badge"><%= workout.typeLabel %></span></td>
+                  <td><%= workout.duration %> perc</td>
+                  <td><%= workout.trainerName %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    <%- include('partials/footer') %>

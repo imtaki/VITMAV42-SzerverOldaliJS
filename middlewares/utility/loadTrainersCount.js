@@ -1,3 +1,5 @@
+import { getCount } from '../../mockdata/data.js';
+
 /**
  * Middleware function to load trainers count. betölti összes edző számot aggregálva
  * @param {*} objRepo - The object repository containing the trainer model.
@@ -6,6 +8,7 @@
 
 module.exports = (objRepo) => {
     return (req, res, next) => {
-        return next();
+        res.locals.trainersCount = objRepo.data.trainers.getCount();
+        next();
     }
 }

@@ -1,0 +1,28 @@
+<form method="post" action="<%= formAction %>">
+  <p>
+    <label for="nev">Név</label><br>
+    <input type="text" id="nev" name="nev" value="<%= trainer.name || '' %>" required>
+  </p>
+
+  <p>
+    <label for="kor">Kor</label><br>
+    <input type="number" id="kor" name="kor" value="<%= trainer.age || '' %>" required>
+  </p>
+
+  <p>
+    <label for="magassag">Magasság (cm)</label><br>
+    <input type="number" id="magassag" name="magassag" value="<%= trainer.height || '' %>" required>
+  </p>
+
+  <p>
+    <label for="certifikacio">Certifikáció</label><br>
+    <select id="certifikacio" name="certifikacio" required>
+      <option value="">Válassz...</option>
+      <option value="true" <%= trainer.certified === true ? 'selected' : '' %>>Igen</option>
+      <option value="false" <%= trainer.certified === false ? 'selected' : '' %>>Nem</option>
+    </select>
+  </p>
+
+  <a href="/trainers" class="btn-secondary">Mégse</a>
+  <button type="submit" class="btn-primary"><%= submitLabel %></button>
+</form>

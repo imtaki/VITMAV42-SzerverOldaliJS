@@ -1,0 +1,12 @@
+<%- include('partials/header', { title: 'Edző szerkesztése', activePage: 'trainers' }) %>
+        <main class="content">
+
+            <h1>Edző szerkesztése</h1>
+            <p class="subtitle">Edző adatainak módosítása.</p>
+
+            <section class="panel">
+                <%- include('partials/trainer-form', { trainer: trainer, formAction: '/trainer/edit/' + trainer.id, submitLabel: 'Mentés' }) %>
+            </section>
+
+        </main>
+        <%- include('partials/footer') %>
