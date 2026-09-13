@@ -6,7 +6,7 @@
 
 module.exports = (objRepo) => {
     return (req, res, next) => {
-        res.locals.workoutsCount = objRepo.data.workouts.getCount();
+        // res.locals.workoutsCount = objRepo.data.workouts.getCount();
         next();
     }
 }
