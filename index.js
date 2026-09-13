@@ -1,10 +1,14 @@
-import express from 'express';
+const express = require('express');
+const path = require('path');
 
 const app = express();
 
-const subscribeToRoutes = require('./routes/index');
+app.set('view engine', 'ejs');
 
-app.use(express.static('static'));
+app.use(express.static('views'));
+
+
+const subscribeToRoutes = require('./routes/index');
 
 subscribeToRoutes(app);
 

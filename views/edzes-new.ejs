@@ -1,0 +1,14 @@
+<%- include('partials/header', { title: 'Új edzés', activePage: 'workouts' }) %>
+<main class="content">
+  <div class="content-header">
+    <div>
+      <h1>Új edzés</h1>
+      <p class="subtitle">Új edzés hozzáadása a rendszerhez.</p>
+    </div>
+  </div>
+
+  <section class="panel">
+    <%- include('partials/workout-form', { workout: workout, trainers: trainers, formAction: '/workout/new', submitLabel: 'Létrehozás' }) %>
+  </section>
+</main>
+<%- include('partials/footer') %>

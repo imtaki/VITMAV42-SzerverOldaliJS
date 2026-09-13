@@ -1,0 +1,40 @@
+  <%- include('partials/header', { title: 'Edzések', activePage: 'workouts' }) %>
+    <main class="content">
+      <div class="content-header">
+        <div>
+          <h1>Edzések</h1>
+          <p class="subtitle">A szolgáltatásban elérhető edzéstípusok.</p>
+        </div>
+        <a class="btn-primary" href="/workout/new">+ Új edzés</a>
+      </div>
+
+      <%- include('partials/search') %>
+
+      <section class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Edzés neve</th>
+                <th>Típus</th>
+                <th>Időtartam</th>
+                <th>Edző</th>
+                <th>Műveletek</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% workouts.forEach(workout => { %>
+                <tr>
+                  <td><%= workout.name %></td>
+                  <td><span class="badge"><%= workout.typeLabel %></span></td>
+                  <td><%= workout.duration %> perc</td>
+                  <td><%= workout.trainerName %></td>
+                  <td><%- include('partials/table-actions', { editUrl: '/workout/edit/' + workout.id, deleteUrl: '/workout/delete/' + workout.id }) %></td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <%- include('partials/paginate') %>
+    <%- include('partials/footer') %>

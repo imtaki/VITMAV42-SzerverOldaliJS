@@ -1,0 +1,14 @@
+<%- include('partials/header', { title: 'Edzés szerkesztése', activePage: 'workouts' }) %>
+<main class="content">
+  <div class="content-header">
+    <div>
+      <h1>Edzés szerkesztése</h1>
+      <p class="subtitle">Edzés adatainak módosítása.</p>
+    </div>
+  </div>
+
+  <section class="panel">
+    <%- include('partials/workout-form', { workout: workout, trainers: trainers, formAction: '/workout/edit/' + workout.id, submitLabel: 'Mentés' }) %>
+  </section>
+</main>
+<%- include('partials/footer') %>

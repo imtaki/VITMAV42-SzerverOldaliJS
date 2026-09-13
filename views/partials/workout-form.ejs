@@ -1,0 +1,31 @@
+<form method="post" action="<%= formAction %>">
+  <p>
+    <label for="nev">Edzés neve</label><br>
+    <input type="text" id="nev" name="nev" value="<%= workout.name || '' %>" required>
+  </p>
+
+  <p>
+    <label for="tipus">Típus</label><br>
+    <select id="tipus" name="tipus" required>
+      <option value="sulyzos" <%= workout.type === 'sulyzos' ? 'selected' : '' %>>Súlyzós</option>
+      <option value="kardio" <%= workout.type === 'kardio' ? 'selected' : '' %>>Kardió</option>
+    </select>
+  </p>
+
+  <p>
+    <label for="idotartam">Időtartam (perc)</label><br>
+    <input type="number" id="idotartam" name="idotartam" value="<%= workout.duration || '' %>" required>
+  </p>
+
+  <p>
+    <label for="edzo">Edző</label><br>
+    <select id="edzo" name="edzo" required>
+      <% trainers.forEach(trainer => { %>
+        <option value="<%= trainer.id %>" <%= workout.trainerId === trainer.id ? 'selected' : '' %>><%= trainer.name %></option>
+      <% }) %>
+    </select>
+  </p>
+
+  <a href="/workouts" class="btn-secondary">Mégse</a>
+  <button type="submit" class="btn-primary"><%= submitLabel %></button>
+</form>
