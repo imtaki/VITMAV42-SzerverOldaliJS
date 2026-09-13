@@ -1,4 +1,4 @@
-import { defaultViewData } from '../../mockdata/data.js';
+
 /**
  * Middleware function to render HTML. HTML-t add ki
  * @param {*} objRepo - The object repository.
@@ -8,6 +8,7 @@ import { defaultViewData } from '../../mockdata/data.js';
  * @returns {Function} - The middleware function.
  */
 
+const { defaultViewData } = require('../../mockdata/data');
 
 module.exports = (objRepo, view, viewData = {}) => {
     return (req, res, next) => {
