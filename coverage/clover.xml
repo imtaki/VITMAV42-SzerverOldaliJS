@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1789495920663" clover="3.2.0">
+  <project timestamp="1789495920663" name="All files">
+    <metrics statements="26" coveredstatements="21" conditionals="30" coveredconditionals="11" methods="6" coveredmethods="5" elements="62" coveredelements="37" complexity="0" loc="26" ncloc="26" packages="3" files="3" classes="3"/>
+    <package name="trainers">
+      <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <file name="getMostTrainer.js" path="/Users/taki1337/Documents/GitHub/VITMAV42-SzerverOldaliJS/middlewares/trainers/getMostTrainer.js">
+        <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="16" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="utility">
+      <metrics statements="10" coveredstatements="7" conditionals="24" coveredconditionals="6" methods="2" coveredmethods="1"/>
+      <file name="format.js" path="/Users/taki1337/Documents/GitHub/VITMAV42-SzerverOldaliJS/middlewares/utility/format.js">
+        <metrics statements="10" coveredstatements="7" conditionals="24" coveredconditionals="6" methods="2" coveredmethods="1"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="3" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="workouts">
+      <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="getWorkout.js" path="/Users/taki1337/Documents/GitHub/VITMAV42-SzerverOldaliJS/middlewares/workouts/getWorkout.js">
+        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
