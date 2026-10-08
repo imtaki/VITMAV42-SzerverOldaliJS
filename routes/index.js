@@ -19,42 +19,39 @@ const renderMW = require('../middlewares/utility/render');
 module.exports = function (app) {
     const objRepo = {};
 
-    app.use('/',
+    app.get('/',
         loadTrainersCountMW(objRepo),
         loadWorkoutCountMW(objRepo),
         renderMW(objRepo, 'index'));
 
-    
-    app.use('/trainers',
+
+    app.get('/trainers',
         getTrainersMW(objRepo),
         renderMW(objRepo, 'trainers'));
 
-    
-    app.use('/workouts',
+
+    app.get('/workouts',
         getWorkoutsMW(objRepo),
         renderMW(objRepo, 'workouts'));
 
-    
+
+    app.get('/trainer/most/',
+        getMostTrainerMW(objRepo));
+
     app.get('/trainer/:id',
         getTrainerMW(objRepo));
 
     app.get('/trainer/',
         getTrainersMW(objRepo));
 
-    app.get('/trainer/most/',
-        getMostTrainerMW(objRepo));
-
     app.post('/trainer/new',
         postTrainerMW(objRepo));
 
-    app.put('/trainer/edit/:id',
+    app.post('/trainer/edit/:id',
         updateTrainerMW(objRepo));
 
-    app.delete('/trainer/delete/:id',
+    app.post('/trainer/delete/:id',
         deleteTrainerMW(objRepo));
-
-    app.get('/workout/:id',
-        getWorkoutMW(objRepo));
 
     app.get('/workout/',
         getWorkoutsMW(objRepo));
@@ -62,12 +59,15 @@ module.exports = function (app) {
     app.get('/workout/latest',
         getLatestWorkoutsMW(objRepo));
 
+    app.get('/workout/:id',
+        getWorkoutMW(objRepo));
+
     app.post('/workout/new',
         postWorkoutMW(objRepo));
 
-    app.put('/workout/edit/:id',
+    app.post('/workout/edit/:id',
         updateWorkoutMW(objRepo));
 
-    app.delete('/workout/delete/:id',
+    app.post('/workout/delete/:id',
         deleteWorkoutMW(objRepo));
 };
