@@ -1,4 +1,4 @@
-import { defaultViewData } from '../../mockdata/data.js';
+const { defaultViewData } = require('../../mockdata/data.js');
 /**
  * Middleware function to render HTML. HTML-t add ki
  * @param {*} objRepo - The object repository.

@@ -28,8 +28,8 @@ const defaultViewData = {
     workouts,
     latestWorkouts: workouts,
     stats: [
-        { label: 'Személyi edzők', value: trainers.length, icon: '<circle cx="12" cy="8" r="3.5" /><path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6" />' },
-        { label: 'Edzések', value: workouts.length, icon: '<path d="M7 4v16M17 4v16M4 8h16M4 16h16" />' }
+        { label: 'Személyi edzők', value: trainers.length, icon: 'trainers' },
+        { label: 'Edzések', value: workouts.length, icon: 'workouts' }
     ]
 };
 

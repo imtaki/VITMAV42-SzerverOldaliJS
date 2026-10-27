@@ -1,4 +1,4 @@
-import { getCount } from '../../mockdata/data.js';
+const { trainers, getCount } = require('../../mockdata/data.js');
 
 /**
  * Middleware function to load trainers count. betölti összes edző számot aggregálva
@@ -8,7 +8,7 @@ import { getCount } from '../../mockdata/data.js';
 
 module.exports = (objRepo) => {
     return (req, res, next) => {
-        res.locals.trainersCount = objRepo.data.trainers.getCount();
+        res.locals.trainersCount = getCount(trainers);
         next();
     }
 }

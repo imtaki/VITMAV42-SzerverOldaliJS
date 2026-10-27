@@ -2,7 +2,14 @@
   <div class="card-top">
     <span class="card-label"><%= label %></span>
     <span class="card-icon">
-      <svg viewBox="0 0 24 24"><%- icon %></svg>
+      <svg viewBox="0 0 24 24">
+        <% if (icon === 'trainers') { %>
+          <circle cx="12" cy="8" r="3.5" />
+          <path d="M5 21c.7-4 3-6 7-6s6.3 2 7 6" />
+        <% } else if (icon === 'workouts') { %>
+          <path d="M7 4v16M17 4v16M4 8h16M4 16h16" />
+        <% } %>
+      </svg>
     </span>
   </div>
   <div class="card-value"><%= value %></div>

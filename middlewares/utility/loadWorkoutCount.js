@@ -1,3 +1,5 @@
+const { workouts, getCount } = require('../../mockdata/data.js');
+
 /**
  * Middleware function to load workouts count. betölti összes edzés számát aggregálva
  * @param {*} objRepo - The object repository containing the workout model.
@@ -6,7 +8,7 @@
 
 module.exports = (objRepo) => {
     return (req, res, next) => {
-        res.locals.workoutsCount = objRepo.data.workouts.getCount();
+        res.locals.workoutsCount = getCount(workouts);
         next();
     }
 }
