@@ -20,8 +20,7 @@ const EdzoModel = require('../models/Edzo');
 const EdzesModel = require('../models/Edzes');
 
 module.exports = function (app) {
-    const objRepo = {EdzoModel: EdzoModel, EdzesModel: EdzesModel};
-    const sendLocal = key => (req, res) => res.json(res.locals[key]);
+    const objRepo = { EdzoModel:EdzoModel, EdzesModel:EdzesModel };
 
     app.get('/',
         loadTrainersCountMW(objRepo),
@@ -29,13 +28,13 @@ module.exports = function (app) {
         getLatestWorkoutsMW(objRepo),
         renderMW(objRepo, 'index'));
 
-    
-    app.get('/trainers',
+
+    app.use('/trainers',
         getTrainersMW(objRepo),
         renderMW(objRepo, 'edzok'));
 
-    
-    app.get('/workouts',
+
+    app.use('/workouts',
         getWorkoutsMW(objRepo),
         renderMW(objRepo, 'edzesek'));
 
@@ -43,63 +42,65 @@ module.exports = function (app) {
         renderMW(objRepo, 'edzo-new', { trainer: {} }));
 
     app.get('/trainer/edit/:id',
-        getTrainerMW(objRepo),
-        renderMW(objRepo, 'edzo-edit'));
+        renderMW(objRepo, 'edzo-edit', req => ({
+            trainer: {
+                id: req.params.id,
+                name: 'Péter',
+                initial: 'P',
+                age: 30,
+                height: 190,
+                certified: true
+            }
+        })));
 
     app.get('/workout/new',
         getTrainersMW(objRepo),
         renderMW(objRepo, 'edzes-new', { workout: {} }));
 
     app.get('/workout/edit/:id',
-        getWorkoutMW(objRepo),
         getTrainersMW(objRepo),
-        renderMW(objRepo, 'edzes-edit'));
+        renderMW(objRepo, 'edzes-edit', req => ({
+            workout: {
+                id: req.params.id,
+                name: 'Mell és hát',
+                type: 'sulyzos',
+                typeLabel: 'Súlyzós',
+                duration: 60,
+                trainerId: 1,
+                trainerName: 'Péter'
+            }
+        })));
 
-    
+
+    app.get('/trainer/most',
+        getMostTrainerMW(objRepo));
+
     app.get('/trainer/',
-        getTrainersMW(objRepo), sendLocal('trainers'));
-
-    app.get('/trainer/most/',
-        getMostTrainerMW(objRepo), sendLocal('trainer'));
-
-    app.get('/trainer/:id',
-        getTrainerMW(objRepo), sendLocal('trainer'));
+        getTrainersMW(objRepo));
 
     app.post('/trainer/new',
         postTrainerMW(objRepo));
 
-    app.put('/trainer/edit/:id',
-        updateTrainerMW(objRepo));
-
     app.post('/trainer/edit/:id',
         updateTrainerMW(objRepo));
-
-    app.delete('/trainer/delete/:id',
-        deleteTrainerMW(objRepo));
 
     app.get('/trainer/delete/:id',
         deleteTrainerMW(objRepo));
 
     app.get('/workout/',
-        getWorkoutsMW(objRepo), sendLocal('workouts'));
+        getWorkoutsMW(objRepo));
 
     app.get('/workout/latest',
-        getLatestWorkoutsMW(objRepo), sendLocal('latestWorkouts'));
+        getLatestWorkoutsMW(objRepo));
 
     app.get('/workout/:id',
-        getWorkoutMW(objRepo), sendLocal('workout'));
+        getWorkoutMW(objRepo));
 
     app.post('/workout/new',
         postWorkoutMW(objRepo));
 
-    app.put('/workout/edit/:id',
-        updateWorkoutMW(objRepo));
-
     app.post('/workout/edit/:id',
         updateWorkoutMW(objRepo));
-
-    app.delete('/workout/delete/:id',
-        deleteWorkoutMW(objRepo));
 
     app.get('/workout/delete/:id',
         deleteWorkoutMW(objRepo));
